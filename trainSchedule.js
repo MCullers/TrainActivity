@@ -31,18 +31,18 @@ $("#submit").on("click", function(event) {
     $("#trainDestination").val("");
     $("#trainTime").val("");
     $("#trainFrequency").val("");
+    //Not Working ATM
   });
   
   database.ref().on("child_added", function(childSnapshot) {
-    //console.log(childSnapshot.val());
+    console.log(childSnapshot.val());
 
     var trainName = childSnapshot.val().name;
     var trainDest = childSnapshot.val().dest;
     var trainTime = childSnapshot.val().time;
     var trainFreq = childSnapshot.val().rate;
   
-    var trainArrival = moment()
-    //console.log(trainArrival)
+    //not able to figure out moment.js
     
     var newRow = $("<tr>").append(
       $("<td>").text(trainName),
@@ -52,4 +52,5 @@ $("#submit").on("click", function(event) {
     );
   
     $("#trainSchedule > tbody").append(newRow);
+    //for some reason firebase data is not going to the table
   });
