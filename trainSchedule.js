@@ -34,7 +34,7 @@ $("#submit").on("click", function(event) {
   });
   
   database.ref().on("child_added", function(childSnapshot) {
-    console.log(childSnapshot.val());
+    //console.log(childSnapshot.val());
 
     var trainName = childSnapshot.val().name;
     var trainDest = childSnapshot.val().dest;
@@ -42,7 +42,7 @@ $("#submit").on("click", function(event) {
     var trainFreq = childSnapshot.val().rate;
   
     var trainArrival = moment()
-    console.log(trainArrival)
+    //console.log(trainArrival)
     
     var newRow = $("<tr>").append(
       $("<td>").text(trainName),
