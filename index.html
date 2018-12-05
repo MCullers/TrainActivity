@@ -29,15 +29,18 @@
                 Train Arrival Schedule
             </div>
             <div class="card-body">
-            <table class="table" id = trainSchedule>
+            <table class="table" id = train-Schedule>
                 <thead>
                     <tr>
                         <th scope="col">Train Name</th>
                         <th scope="col">Destination</th>
                         <th scope="col">Frequency (min)</th>
                         <th scope="col">Next Arrival</th>
+                        <th scope="col">Minutes Away</th>
                     </tr>
                 </thead>
+                <tbody>
+                </tbody>
             </table>
             </div>
             </div>
@@ -53,22 +56,22 @@
                         <div class="card-body">
                             <form>
                                 <div class="form-group">
-                                    <label for="trainName"><strong>Train Name</strong></label>
-                                    <input type="text" class="form-control" id="trainName" placeholder="Thomas The Tank Engine">
+                                    <label for="train-name"><strong>Train Name</strong></label>
+                                    <input type="text" class="form-control" id="train-name" placeholder="Thomas The Tank Engine">
                                 </div>
                                 <div class="form-group">
-                                    <label for="trainDestination"><strong>Destination</strong></label>
-                                    <input type="text" class="form-control" id="trainDestination" placeholder="Tidmouth">
+                                    <label for="train-destination"><strong>Destination</strong></label>
+                                    <input type="text" class="form-control" id="train-destination" placeholder="Tidmouth">
                                 </div>
                                 <div class="form-group">
-                                    <label for="trainTime"><strong>First Train Arrival (HH:mm - Military Time)</strong></label>
-                                    <input type="text" class="form-control" id="trainTime" placeholder="22:00">
+                                    <label for="train-time"><strong>First Train Arrival (HH:mm - Military Time)</strong></label>
+                                    <input type="text" class="form-control" id="train-time" placeholder="22:00">
                                 </div>
                                 <div class="form-group">
-                                    <label for="trainFrequency"><strong>Frequency (min)</strong></label>
-                                    <input type="number" class="form-control" id="trainFrequency" placeholder="5">
+                                    <label for="train-frequency"><strong>Frequency (min)</strong></label>
+                                    <input type="number" class="form-control" id="train-frequency" placeholder="5">
                                 </div>
-                                    <button type="submit" class="btn btn-primary" id="submit" style="background-color:black">Submit</button>
+                                    <button type="submit" class="btn btn-primary" id="submit" style="background-color:black">Add</button>
                             </form>
                         </div>
                     </div>

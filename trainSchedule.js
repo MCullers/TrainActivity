@@ -13,10 +13,10 @@ var config = {
 $("#submit").on("click", function(event) {
     event.preventDefault();
   
-    var trainName = $("#trainName").val().trim();
-    var trainDest = $("#trainDestination").val().trim();
-    var trainTime = $("#trainTime").val().trim();
-    var trainFreq = $("#trainFrequency").val().trim();
+    var trainName = $("#train-name").val().trim();
+    var trainDest = $("#train-destination").val().trim();
+    var trainTime = moment($("#train-time").val().trim(),"HH:mm").subtract(10,"years").format("X");
+    var trainFreq = $("#train-frequency").val().trim();
   
     var newTrain = {
       name: trainName,
@@ -27,30 +27,30 @@ $("#submit").on("click", function(event) {
   
     database.ref().push(newTrain);
   
-    $("#trainName").val("");
-    $("#trainDestination").val("");
-    $("#trainTime").val("");
-    $("#trainFrequency").val("");
-    //Not Working ATM
+    $("#train-name").val("");
+    $("#train-destination").val("");
+    $("#train-time").val("");
+    $("#train-frequency").val("");
   });
   
-  database.ref().on("child_added", function(childSnapshot) {
-    //console.log(childSnapshot.val());
+  database.ref().on("child_added", function(snapshot) {
 
-    var trainName = childSnapshot.val().name;
-    var trainDest = childSnapshot.val().dest;
-    var trainTime = childSnapshot.val().time;
-    var trainFreq = childSnapshot.val().rate;
+    var trainName = snapshot.val().name;
+    var trainDest = snapshot.val().dest;
+    var trainTime = snapshot.val().time;
+    var trainFreq = snapshot.val().rate;
   
-    //not able to figure out moment.js
-    
+    var remainder = moment().diff(moment.unix(trainTime),"minutes")%trainFreq;
+    var minutes = trainFreq - remainder;
+    var arrival = moment().add(minutes,"m").format("hh:mm A");
+
     var newRow = $("<tr>").append(
       $("<td>").text(trainName),
       $("<td>").text(trainDest),
-      $("<td>").text(trainTime),
       $("<td>").text(trainFreq),
+      $("<td>").text(arrival),
+      $("<td>").text(minutes)
     );
   
-    $("#trainSchedule > tbody").append(newRow);
-    //for some reason firebase data is not going to the table
+    $("#train-Schedule > tbody").append(newRow);
   });
